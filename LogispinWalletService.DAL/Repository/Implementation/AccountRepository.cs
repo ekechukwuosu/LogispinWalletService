@@ -19,7 +19,7 @@ namespace LogispinWalletService.DAL.Repository.Implementation
 
         public async Task<bool> CheckIfAccountExists(string email)
         {
-            return await _dB.Accounts.AnyAsync(a => a.Email == email);
+            return await _dB.Accounts.AnyAsync(a => a.Email.Equals(email));
         }
 
         public async Task<Account> CreateAccount(string firstName, string lastName, string email)
@@ -45,7 +45,7 @@ namespace LogispinWalletService.DAL.Repository.Implementation
             Account account = new Account();
             try
             {
-                account = await _dB.Accounts.FirstOrDefaultAsync(a => a.Id == accountId);
+                account = await _dB.Accounts.FirstOrDefaultAsync(a => a.Id.Equals(accountId));
             }catch (Exception ex)
             {
                 _logger.LogError($"Error in AccountRepository class, GetAccountDetails Method. Message : {ex.Message}");
@@ -55,12 +55,12 @@ namespace LogispinWalletService.DAL.Repository.Implementation
 
         public async Task<Account> GetAccountDetailsWithEmail(string email)
         {
-            return await _dB.Accounts.FirstOrDefaultAsync(a => a.Email == email);
+            return await _dB.Accounts.FirstOrDefaultAsync(a => a.Email.Equals(email));
         }
 
         public async Task<Guid> GetAccountId(string email)
         {
-            var account =  await _dB.Accounts.FirstOrDefaultAsync(b => b.Email == email);
+            var account =  await _dB.Accounts.FirstOrDefaultAsync(b => b.Email.Equals(email));
             return account.Id;
         }
     }

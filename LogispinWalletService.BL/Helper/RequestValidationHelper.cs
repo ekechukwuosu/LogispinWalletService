@@ -30,5 +30,13 @@ namespace LogispinWalletService.BL.Helper
             }
             return true;
         }
+        public static bool ValidateGetWalletTransactionsRequest(GetWalletTransactionsRequest getWalletTransactionsRequest)
+        {
+            if (getWalletTransactionsRequest == null || (string.IsNullOrEmpty(getWalletTransactionsRequest.Email) && !EmailValidationHelper.IsValidEmail(getWalletTransactionsRequest.Email)))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

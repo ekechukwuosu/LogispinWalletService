@@ -1,5 +1,6 @@
 ﻿using LogispinWalletService.Common.Enums;
 using LogispinWalletService.DAL.Repository.Interfaces;
+using LogispinWalletService.DAL.Responses;
 using LogispinWalletService.Data.DB;
 using LogispinWalletService.Data.Models;
 using Microsoft.EntityFrameworkCore;
@@ -19,25 +20,48 @@ namespace LogispinWalletService.DAL.Repository.Implementation
 
         public async Task<int> GetFailedTransactionsCount(Guid accountId)
         {
-            var failedTransactions = await _dB.Transactions.Where(a => a.AccountId == accountId && a.Status == TransactionStatus.Failed).ToListAsync();
+            var failedTransactions = await _dB.Transactions.Where(a => a.AccountId.Equals(accountId) && a.Status.Equals(TransactionStatus.Failed)).ToListAsync();
             return failedTransactions.Count();
         }
 
         public async Task<int> GetPendingTransactionsCount(Guid accountId)
         {
-            var pendingTransactions = await _dB.Transactions.Where(a => a.AccountId == accountId && a.Status == TransactionStatus.Pending).ToListAsync();
+            var pendingTransactions = await _dB.Transactions.Where(a => a.AccountId.Equals(accountId) && a.Status.Equals(TransactionStatus.Pending)).ToListAsync();
             return pendingTransactions.Count();
         }
 
         public async Task<int> GetSuccessfulTransactionsCount(Guid accountId)
         {
-            var successfulTransactions = await _dB.Transactions.Where(a => a.AccountId == accountId && a.Status == TransactionStatus.Success).ToListAsync();
+            var successfulTransactions = await _dB.Transactions.Where(a => a.AccountId.Equals(accountId) && a.Status.Equals(TransactionStatus.Success)).ToListAsync();
             return successfulTransactions.Count();
         }
 
-        public Task<List<Transaction>> GetTransactions(Guid accountId)
+        public async Task<List<Transaction>> GetTransactions(Guid accountId, int pageNumber, int pageSize)
         {
-            return  _dB.Transactions.Where(a => a.AccountId == accountId).ToListAsync();
+            return await _dB.Transactions.Where(a => a.AccountId.Equals(accountId))
+                    .OrderByDescending(a => a.DateCreated)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize).ToListAsync();
+        }
+
+        public async Task<List<Transaction>> GetTransactionsByAccountIdAndStatus(Guid accountId, TransactionStatus? transactionStatus, bool getAll, int pageNumber, int pageSize)
+        {
+            List<Transaction> result = new List<Transaction>();
+            if (getAll)
+            {
+                result = await _dB.Transactions.Where(a => a.AccountId.Equals(accountId))
+                        .OrderByDescending(a => a.DateCreated)
+                        .Skip((pageNumber - 1) * pageSize)
+                        .Take(pageSize).ToListAsync();
+            }
+            else
+            {
+                result = await _dB.Transactions.Where(a => a.AccountId.Equals(accountId) && a.Status.Equals(transactionStatus))
+                        .OrderByDescending(a => a.DateCreated)
+                        .Skip((pageNumber - 1) * pageSize)
+                        .Take(pageSize).ToListAsync();
+            }
+            return result;
         }
 
         public async Task<Transaction> LogTransaction(Guid accountId, decimal amount, TransactionType transactionType)
@@ -69,10 +93,10 @@ namespace LogispinWalletService.DAL.Repository.Implementation
         public void ProcessPendingTransactions(Guid transactionId)
         {
             bool action = false;
-            var transaction = _dB.Transactions.FirstOrDefault(a => a.Id == transactionId);
+            var transaction = _dB.Transactions.FirstOrDefault(a => a.Id.Equals(transactionId));
             if (transaction != null)
             {
-                var account = _dB.Accounts.FirstOrDefault(a => a.Id == transaction.AccountId);
+                var account = _dB.Accounts.FirstOrDefault(a => a.Id.Equals(transaction.AccountId));
                 if (account != null)
                 {
                     if (transaction.Type == TransactionType.Add)

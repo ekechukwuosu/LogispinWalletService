@@ -32,6 +32,18 @@ namespace LogispinWalletService.Controllers
             var response = await _mediator.Send(walletTransactionStatusSummaryQuery);
             return Ok(response);
         }
+        [HttpGet("GetWalletTransactions")]
+        public async Task<ActionResult> GetTransactions([FromQuery] GetWalletTransactionsRequest getWalletTransactionsRequest)
+        {
+            if (!RequestValidationHelper.ValidateGetWalletTransactionsRequest(getWalletTransactionsRequest))
+            {
+                return BadRequest("Invalid input parameters");
+            }
+            GetWalletTransactionsQuery walletTransactionsQuery = new(new GetWalletTransactionsRequest() { Email = getWalletTransactionsRequest.Email, TransactionStatus = getWalletTransactionsRequest.TransactionStatus, PageNumber = getWalletTransactionsRequest.PageNumber, PageSize = getWalletTransactionsRequest.PageSize });
+
+            var response = await _mediator.Send(walletTransactionsQuery);
+            return Ok(response);
+        }
         [HttpPost("AddFunds")]
         public async Task<ActionResult> Add([FromBody] FundsRequest fundsRequest)
         {

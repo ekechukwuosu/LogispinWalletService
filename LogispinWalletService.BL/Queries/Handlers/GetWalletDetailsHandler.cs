@@ -1,4 +1,5 @@
 ﻿using LogispinWalletService.BL.APIResponse;
+using LogispinWalletService.BL.Helper;
 using LogispinWalletService.BL.Queries.ReturnTypes;
 using LogispinWalletService.Common.Static;
 using LogispinWalletService.DAL.Repository.Interfaces;
@@ -22,7 +23,7 @@ namespace LogispinWalletService.BL.Queries.Handlers
             response = await _accountRepository.GetAccountDetailsWithEmail(getWalletDetailsRequest.Email);
             string message = response != null? ResponseMessages.SuccessKey : ResponseMessages.InvalidAccountKey;
 
-            return new ServiceResponse<GetWalletDetailsResponse>() { Data = new GetWalletDetailsResponse(response.FirstName, response.LastName, response.Email, response.CurrentBalance, response.Status, response.DateCreated), ResponseMessage = message };
+            return new ServiceResponse<GetWalletDetailsResponse>() { Data = new GetWalletDetailsResponse(response.FirstName, response.LastName, response.Email, response.CurrentBalance, UtilityHelper.GetEnumDescription(response.Status), response.DateCreated), ResponseMessage = message };
             
         }
     }
