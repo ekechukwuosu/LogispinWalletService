@@ -21,4 +21,11 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LogispinWalletService.BL\LogispinWalletService.BL.csproj" />
+    <ProjectReference Include="..\LogispinWalletService.DAL\LogispinWalletService.DAL.csproj" />
+    <ProjectReference Include="..\LogispinWalletService\LogispinWalletService.csproj" />
+    <ProjectReference Include="..\LogspinWalletService.Common\LogispinWalletService.Common.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,4 @@
-﻿using LogispinWalletService.Common.Enums;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Reflection;
 
 namespace LogispinWalletService.BL.Helper

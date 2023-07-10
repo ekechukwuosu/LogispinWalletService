@@ -1,6 +1,5 @@
 ﻿using LogispinWalletService.Common.Enums;
 using LogispinWalletService.DAL.Repository.Interfaces;
-using LogispinWalletService.DAL.Responses;
 using LogispinWalletService.Data.DB;
 using LogispinWalletService.Data.Models;
 using Microsoft.EntityFrameworkCore;

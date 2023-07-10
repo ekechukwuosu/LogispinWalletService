@@ -1,5 +1,4 @@
-﻿using Azure;
-using LogispinWalletService.BL.APIResponse;
+﻿using LogispinWalletService.BL.APIResponse;
 using LogispinWalletService.BL.Queries.ReturnTypes;
 using LogispinWalletService.Common.Static;
 using LogispinWalletService.DAL.Repository.Interfaces;
