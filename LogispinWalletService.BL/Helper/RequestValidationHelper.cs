@@ -24,7 +24,7 @@ namespace LogispinWalletService.BL.Helper
         }
         public static bool ValidateGetWalletDetailsRequest (GetWalletDetailsRequest getWalletDetailsRequest)
         {
-            if (getWalletDetailsRequest == null || (string.IsNullOrEmpty(getWalletDetailsRequest.Email) && !EmailValidationHelper.IsValidEmail(getWalletDetailsRequest.Email)))
+            if (getWalletDetailsRequest == null || (string.IsNullOrEmpty(getWalletDetailsRequest.Email) || !EmailValidationHelper.IsValidEmail(getWalletDetailsRequest.Email)))
             {
                 return false;
             }
@@ -32,7 +32,7 @@ namespace LogispinWalletService.BL.Helper
         }
         public static bool ValidateGetWalletTransactionsRequest(GetWalletTransactionsRequest getWalletTransactionsRequest)
         {
-            if (getWalletTransactionsRequest == null || (string.IsNullOrEmpty(getWalletTransactionsRequest.Email) && !EmailValidationHelper.IsValidEmail(getWalletTransactionsRequest.Email)))
+            if (getWalletTransactionsRequest == null || (string.IsNullOrEmpty(getWalletTransactionsRequest.Email) || !EmailValidationHelper.IsValidEmail(getWalletTransactionsRequest.Email)))
             {
                 return false;
             }

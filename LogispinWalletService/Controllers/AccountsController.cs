@@ -32,7 +32,7 @@ namespace LogispinWalletService.Controllers
             return Ok(response);
         }
         [HttpPost("CreateWalletAccount")]
-        public async Task<ActionResult> Create([FromBody] CreateAccountRequest createAccountRequest)
+        public async Task<IActionResult> Create([FromBody] CreateAccountRequest createAccountRequest)
         {
             if (!RequestValidationHelper.ValidateCreateAccountRequest(createAccountRequest))
             {
