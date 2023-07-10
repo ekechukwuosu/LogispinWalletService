@@ -19,6 +19,10 @@ namespace LogispinWalletService.BL.Mappings
                opt => opt.MapFrom(src => UtilityHelper.GetEnumDescription(src.Status))
            )
            .ForMember(
+               dest => dest.transactionType,
+               opt => opt.MapFrom(src => UtilityHelper.GetEnumDescription(src.Type))
+           )
+           .ForMember(
                dest => dest.dateCreated,
                opt => opt.MapFrom(src => src.DateCreated)
            )

@@ -1,7 +1,9 @@
 ﻿using LogispinWalletService.Common.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace LogispinWalletService.Data.Models
 {
+    [Index(nameof(Email), IsUnique = true)]
     public class Account : Entity
     {
         public string FirstName { get; set; }

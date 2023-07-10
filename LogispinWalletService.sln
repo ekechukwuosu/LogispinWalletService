@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogispinWalletService.Commo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogispinWalletService.Data", "LogspinWalletService.Data\LogispinWalletService.Data.csproj", "{80871BEB-B881-4455-8101-57FA79A5DDBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogspinWalletService.Tests", "LogspinWalletService.Tests\LogspinWalletService.Tests.csproj", "{D77D3C60-5CD9-4A15-A2E0-B6B1068060B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{80871BEB-B881-4455-8101-57FA79A5DDBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80871BEB-B881-4455-8101-57FA79A5DDBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80871BEB-B881-4455-8101-57FA79A5DDBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D77D3C60-5CD9-4A15-A2E0-B6B1068060B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D77D3C60-5CD9-4A15-A2E0-B6B1068060B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D77D3C60-5CD9-4A15-A2E0-B6B1068060B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D77D3C60-5CD9-4A15-A2E0-B6B1068060B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
