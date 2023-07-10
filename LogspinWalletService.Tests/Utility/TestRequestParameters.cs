@@ -4,7 +4,7 @@ using LogispinWalletService.Common.Enums;
 
 namespace LogspinWalletService.Tests.Utility
 {
-    public class TestParameters
+    public class TestRequestParameters
     {
         public static CreateAccountRequest GetSampleCreateAccountRequest()
         {
@@ -39,6 +39,14 @@ namespace LogspinWalletService.Tests.Utility
                 PageSize = 10,
                 TransactionStatus = TransactionQueryStatus.Success,
             };
+        }
+        public static Guid GetSampleAccountId()
+        {
+            return new Guid("2CD79108-1CE8-4351-1FC5-08D9E62605B1");
+        }
+        public static string GetSampleNotPresentEmail()
+        {
+            return "abcd@hotmail.com";
         }
     }
 }

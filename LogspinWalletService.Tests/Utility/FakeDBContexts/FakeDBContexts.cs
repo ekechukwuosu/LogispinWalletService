@@ -22,8 +22,8 @@ namespace LogspinWalletService.Tests.Utility.FakeDBContexts
                     LastName = "Osu",
                     Email = "ekechukwuosu@hotmail.com",
                     Status = LogispinWalletService.Common.Enums.AccountStatus.Active,
-                    DateCreated = DateTime.Now,
-                    DateUpdated = DateTime.Now,
+                    DateCreated = new DateTime(2023,07,10),
+                    DateUpdated = new DateTime(2023, 07, 10),
                     Id = new Guid("2CD79108-1CE8-4351-1FC5-08D9E62605B1")
                 });
                 await databaseContext.SaveChangesAsync();
@@ -38,8 +38,8 @@ namespace LogspinWalletService.Tests.Utility.FakeDBContexts
                     IsAmountGreaterThanBalance = false,
                     Type = LogispinWalletService.Common.Enums.TransactionType.Add,
                     Status = LogispinWalletService.Common.Enums.TransactionStatus.Success,
-                    DateCreated = DateTime.Now,
-                    DateUpdated = DateTime.Now,
+                    DateCreated = new DateTime(2023, 07, 10),
+                    DateUpdated = new DateTime(2023, 07, 10),
                     Id = new Guid("2CD79108-1CE8-4351-1FC5-08D9E62605B2")
                 });
                 databaseContext.Transactions.Add(new Transaction()
@@ -48,9 +48,9 @@ namespace LogspinWalletService.Tests.Utility.FakeDBContexts
                     Amount = 1500,
                     IsAmountGreaterThanBalance = false,
                     Type = LogispinWalletService.Common.Enums.TransactionType.Remove,
-                    Status = LogispinWalletService.Common.Enums.TransactionStatus.Success,
-                    DateCreated = DateTime.Now,
-                    DateUpdated = DateTime.Now,
+                    Status = LogispinWalletService.Common.Enums.TransactionStatus.Failed,
+                    DateCreated = new DateTime(2023, 07, 09),
+                    DateUpdated = new DateTime(2023, 07, 09),
                     Id = new Guid("2CD79108-1CE8-4351-1FC5-08D9E62605B3")
                 });
                 await databaseContext.SaveChangesAsync();

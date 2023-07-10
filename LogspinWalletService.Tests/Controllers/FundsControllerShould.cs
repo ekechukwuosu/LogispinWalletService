@@ -49,7 +49,7 @@ namespace LogspinWalletService.Tests.Controllers
         [Fact]
         public void AddFunds_Should_return_Ok_Success()
         {
-            var request = TestParameters.GetSampleFundsRequest();
+            var request = TestRequestParameters.GetSampleFundsRequest();
 
             _mockIMediator.Setup(s => s.Send(It.IsAny<LogTransactionCommand>(), It.IsAny<CancellationToken>())).ReturnsAsync(new ServiceResponse<LogTransactionResponse>());
 
@@ -61,7 +61,7 @@ namespace LogspinWalletService.Tests.Controllers
         [Fact]
         public void RemoveFunds_Should_return_Ok_Success()
         {
-            var request = TestParameters.GetSampleFundsRequest();
+            var request = TestRequestParameters.GetSampleFundsRequest();
 
             _mockIMediator.Setup(s => s.Send(It.IsAny<LogTransactionCommand>(), It.IsAny<CancellationToken>())).ReturnsAsync(new ServiceResponse<LogTransactionResponse>());
 
@@ -85,7 +85,7 @@ namespace LogspinWalletService.Tests.Controllers
         [Fact]
         public void GetWalletTransactionDetailsSummary_Should_return_Ok_Success()
         {
-            var request = TestParameters.GetSampleGetWalletAccountDetailsRequest();
+            var request = TestRequestParameters.GetSampleGetWalletAccountDetailsRequest();
 
             _mockIMediator.Setup(s => s.Send(It.IsAny<GetWalletTransactionStatusSummaryQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(new ServiceResponse<GetWalletTransactionStatusSummaryResponse>());
 
@@ -110,7 +110,7 @@ namespace LogspinWalletService.Tests.Controllers
         [Fact]
         public void GetTransactions_Should_return_Ok_Success()
         {
-            var request = TestParameters.GetSampleGetWalletTransactionsRequest();
+            var request = TestRequestParameters.GetSampleGetWalletTransactionsRequest();
 
             _mockIMediator.Setup(s => s.Send(It.IsAny<GetWalletTransactionsQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(new ServiceResponse<GetWalletTransactionsResponse>());
 

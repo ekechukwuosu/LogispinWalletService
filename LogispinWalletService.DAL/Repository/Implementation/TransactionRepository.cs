@@ -10,8 +10,8 @@ namespace LogispinWalletService.DAL.Repository.Implementation
     public class TransactionRepository : ITransactionRepository
     {
         private readonly AppDBContext _dB;
-        private readonly ILogger<AccountRepository> _logger;
-        public TransactionRepository(AppDBContext dB, ILogger<AccountRepository> logger) 
+        private readonly ILogger<TransactionRepository> _logger;
+        public TransactionRepository(AppDBContext dB, ILogger<TransactionRepository> logger) 
         {
             _dB = dB;
             _logger = logger;
